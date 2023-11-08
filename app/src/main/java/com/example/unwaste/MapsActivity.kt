@@ -21,6 +21,7 @@ import com.google.maps.DirectionsApiRequest
 import com.google.maps.GeoApiContext
 import com.google.maps.model.DirectionsResult
 import com.google.maps.model.TravelMode
+import com.example.unwaste.DataSample
 
 
 
@@ -64,6 +65,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(iowaCity).title("Click on me to get places and routes!!!"))
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(iowaCity))
+
+
+        // Access the list or donation/compost places and adding markers to the map
+        for (marker in placeMarkers) {
+            val customMarker = LatLng(marker.latitude, marker.longitude)
+            mMap.addMarker(MarkerOptions().position(customMarker).title(marker.title))
+        }
     }
 }
 
