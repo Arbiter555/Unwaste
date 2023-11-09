@@ -34,6 +34,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var mapSearchBar: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val placesClient = Places.createClient(this)
 
         // Initializae search bar
-        val mapSearchBar = findViewById<SearchView>(R.id.mapSearch)
+        // val mapSearchBar = findViewById<SearchView>(R.id.mapSearch)
+        mapSearchBar = findViewById(R.id.mapSearch)
 
         mapSearchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
