@@ -27,7 +27,8 @@ import android.widget.SearchView
 import android.location.Address
 import android.location.Geocoder
 import java.io.IOException
-
+import android.view.View
+import android.widget.TextView
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -113,6 +114,34 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap.addMarker(MarkerOptions().position(customMarker).title(marker.title))
         }
 
+        // Set the custom info window adapter
+        mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+            override fun getInfoWindow(marker: Marker): View? {
+                return null
+            }
+
+            override fun getInfoContents(marker: Marker): View {
+                val infoWindow = layoutInflater.inflate(R.layout.info_window, null)
+
+                val titleTextView: TextView = infoWindow.findViewById(R.id.titleTextView)
+                val snippetTextView: TextView = infoWindow.findViewById(R.id.snippetTextView)
+
+                val dataSample = placeMarkers.find { it.title == marker.title }
+                if (dataSample != null) {
+                    titleTextView.text = dataSample.title
+                    snippetTextView.text = "Contact: ${dataSample.contact}\nHours: ${dataSample.hours}"
+                }
+
+                return infoWindow
+            }
+        })
+
+        // Set the marker click listener
+        mMap.setOnMarkerClickListener { marker ->
+            marker.showInfoWindow()
+            true // Indicates that the click event has been handled
+        }
+    ///
     }
 }
 
