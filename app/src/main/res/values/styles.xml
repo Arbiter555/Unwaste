@@ -2,5 +2,6 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize theme attributes here -->
+        <item name="android:textColorHint">@color/white</item>
     </style>
 </resources>

@@ -75,4 +75,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("com.google.android.libraries.places:places:3.1.0")
     implementation ("com.google.maps:google-maps-services:0.15.0") // Directions API
+
+    implementation("androidx.appcompat:appcompat:1.4.0") // For search bar
+    implementation("androidx.cardview:cardview:1.0.0") //For search bar
+    // implementation "androidx.gridlayout:gridlayout:1.0.0"
 }

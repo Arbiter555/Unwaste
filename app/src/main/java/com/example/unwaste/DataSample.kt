@@ -1,5 +1,6 @@
 package com.example.unwaste
 
+// Some food donation places and composting sites around Iowa City and Coralville
 data class DataSample(
     val latitude: Double,
     val longitude: Double,
