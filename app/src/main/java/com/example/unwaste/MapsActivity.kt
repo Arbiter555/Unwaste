@@ -21,21 +21,13 @@ import com.google.maps.DirectionsApiRequest
 import com.google.maps.GeoApiContext
 import com.google.maps.model.DirectionsResult
 import com.google.maps.model.TravelMode
-import com.example.unwaste.DataSample
-import com.google.android.gms.maps.model.Marker
-import android.widget.SearchView
-import android.location.Address
-import android.location.Geocoder
-import java.io.IOException
-import android.view.View
-import android.widget.TextView
+
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    private lateinit var mapSearchBar: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,47 +38,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-        // mapFragment.getMapAsync(this)
+        mapFragment.getMapAsync(this)
 
         // Initialize the SDK
         Places.initialize(applicationContext, "@string/maps_api_key")
 
         // Create a new PlacesClient instance
         val placesClient = Places.createClient(this)
-
-        // Initializae search bar
-        // val mapSearchBar = findViewById<SearchView>(R.id.mapSearch)
-        mapSearchBar = findViewById(R.id.mapSearch)
-
-        mapSearchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                val location: String? = mapSearchBar.query.toString()
-                var addressList: List<Address>? = null
-
-                if (location != null) {
-                    val geocoder = Geocoder(this@MapsActivity)
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1)
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-
-                    if (addressList != null && addressList.isNotEmpty()) {
-                        val address: Address = addressList[0]
-                        val latLng = LatLng(address.latitude, address.longitude)
-                        mMap.addMarker(MarkerOptions().position(latLng).title(location))
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
-                    }
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
-        mapFragment.getMapAsync(this)
-        ///
     }
 
     /**
@@ -101,50 +59,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Iowa City and move the camera
+        // Add a marker in Sydney and move the camera
         val iowaCity = LatLng(41.66113, -91.53017)
         mMap.addMarker(MarkerOptions().position(iowaCity).title("Click on me to get places and routes!!!"))
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(iowaCity))
 
-        // Add custom markers for each place
-        // Access the list or donation/compost places and adding markers to the map
         for (marker in placeMarkers) {
             val customMarker = LatLng(marker.latitude, marker.longitude)
             mMap.addMarker(MarkerOptions().position(customMarker).title(marker.title))
         }
-
-        // Set the custom info window adapter
-        mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
-            override fun getInfoWindow(marker: Marker): View? {
-                return null
-            }
-
-            override fun getInfoContents(marker: Marker): View {
-                val infoWindow = layoutInflater.inflate(R.layout.info_window, null)
-
-                val titleTextView: TextView = infoWindow.findViewById(R.id.titleTextView)
-                val snippetTextView: TextView = infoWindow.findViewById(R.id.snippetTextView)
-
-                val dataSample = placeMarkers.find { it.title == marker.title }
-                if (dataSample != null) {
-                    titleTextView.text = dataSample.title
-                    snippetTextView.text = "Contact: ${dataSample.contact}\nHours: ${dataSample.hours}"
-                }
-
-                return infoWindow
-            }
-        })
-
-        // Set the marker click listener
-        mMap.setOnMarkerClickListener { marker ->
-            marker.showInfoWindow()
-            true // Indicates that the click event has been handled
-        }
-    ///
     }
 }
-
-
-
-
