@@ -31,8 +31,13 @@ class loading : AppCompatActivity() {
             startButton.isEnabled = true
             // Handle button click to start the main activity
             startButton.setOnClickListener {
-                val intent = Intent(this, MapsActivity::class.java)
+                // To test inventory activity
+                val intent = Intent(this, InventoryActivity::class.java)
                 startActivity(intent)
+
+                // To test maps activity
+                //val intent = Intent(this, MapsActivity::class.java)
+                //startActivity(intent)
                 finish() // Close the loading activity
             }
         }, 2000) // Adjust the delay as needed
