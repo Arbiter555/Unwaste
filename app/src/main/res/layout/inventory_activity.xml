@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="56dp"
     android:background="#FFFFFF"
+    android:theme="@style/Theme.Inventory"
     tools:context=".InventoryActivity">
 
     <LinearLayout
@@ -21,11 +22,11 @@
             android:background="@color/unwaste_light"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:title="Inventory"
             app:titleTextColor="@color/unwaste_dark" />
+            <!--app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:nestedScrollingEnabled="false"
