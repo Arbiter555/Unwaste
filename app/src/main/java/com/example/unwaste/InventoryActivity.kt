@@ -26,6 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
+@Deprecated("Replaced by InventoryFragment")
 class InventoryActivity : ComponentActivity() {
 
     private val TAG = InventoryActivity::class.java.simpleName
@@ -40,7 +41,7 @@ class InventoryActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.inventory_activity)
+        setContentView(R.layout.activity_inventory)
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)

@@ -23,7 +23,7 @@ import com.google.maps.model.DirectionsResult
 import com.google.maps.model.TravelMode
 
 
-
+@Deprecated("Replaced by MapsFragment")
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
