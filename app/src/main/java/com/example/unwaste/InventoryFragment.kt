@@ -94,7 +94,10 @@ class InventoryFragment : Fragment() {
     fun AddEntryButton() {
         Box {
             Button(
-                onClick = {/*open add entry modal*/ },
+                onClick = {
+                    val supportFragmentManager = requireActivity().supportFragmentManager
+                    AddEntryDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
+                },
                 contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = UnWasteLight,
