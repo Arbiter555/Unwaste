@@ -31,7 +31,7 @@ class InventoryActivity : ComponentActivity() {
     private val TAG = InventoryActivity::class.java.simpleName
 
     //Need to change this to the IP address of the computer running the server when testing
-    val BASE_URL = "http://192.168.0.111:8080/inventoryManager/"
+    val BASE_URL = "http://192.168.1.230:8080/inventoryManager/"
     private lateinit var retrofit: Retrofit
     private lateinit var recyclerView: RecyclerView
 
@@ -70,7 +70,7 @@ class InventoryActivity : ComponentActivity() {
                 val restaurants: List<Restaurant>? = response.body()?.toList()
                 restaurants?.let {
                     recyclerView.adapter =
-                        RestaurantAdapter(it, R.layout.restaurant_card, applicationContext)
+                        RestaurantAdapter(it, R.layout.restaurant_card)
                     Log.d(TAG, "Number of restaurants received: ${restaurants.size}")
                 }
             }
