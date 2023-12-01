@@ -4,4 +4,10 @@
     <string name="title_activity_inventory">InventoryActivity</string>
     <!--    <string name="maps_api_key">AIzaSyBQnmPxMiK-Z06w0JDnHkMOH0gkNRjDepM</string>-->
     <string name="maps_api_key">AIzaSyA4f08PeNsMpZF6pvIKd08lmKxUsqCoBI0</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_inventory">Inventory</string>
+    <string name="title_maps">Maps</string>
 </resources>

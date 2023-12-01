@@ -1,6 +1,5 @@
 package com.example.unwaste
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RestaurantAdapter(
     private val restaurants: List<Restaurant>,
-    private val rowLayout: Int,
-    private val context: Context
+    private val rowLayout: Int
 ) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

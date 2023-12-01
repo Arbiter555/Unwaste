@@ -32,7 +32,7 @@ class loading : AppCompatActivity() {
             // Handle button click to start the main activity
             startButton.setOnClickListener {
                 // To test inventory activity
-                val intent = Intent(this, InventoryActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
 
                 // To test maps activity

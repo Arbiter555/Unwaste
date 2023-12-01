@@ -1,6 +1,5 @@
 package com.example.unwaste
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class QuestionAdapter(
     private val questions: List<Question>,
-    private val rowLayout: Int,
-    private val context: Context
+    private val rowLayout: Int
 ) : RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>() {
 
     inner class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
