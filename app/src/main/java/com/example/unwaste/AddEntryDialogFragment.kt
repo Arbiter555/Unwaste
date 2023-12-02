@@ -1,6 +1,7 @@
 package com.example.unwaste
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,31 +43,25 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.findViewById<RecyclerView>(R.id.list)?.layoutManager =
-            LinearLayoutManager(context)
-        activity?.findViewById<RecyclerView>(R.id.list)?.adapter =
-            arguments?.getInt(ARG_ITEM_COUNT)?.let { EntryAdapter(it) }
+        val recyclerView = activity?.findViewById<RecyclerView>(R.id.list)
+        recyclerView?.layoutManager = LinearLayoutManager(context)
+        if (recyclerView?.isAttachedToWindow == true) {
+            recyclerView.adapter = arguments?.getInt(ARG_ITEM_COUNT)?.let { EntryAdapter(it) }
+        } else {
+            Log.w("AddEntryDialogFragment", "RecyclerView is not attached to window")
+        }
     }
 
-    private inner class ViewHolder internal constructor(binding: FragmentAddEntryDialogItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        internal val text: TextView = binding.text
-    }
-
-    private inner class EntryAdapter internal constructor(private val mItemCount: Int) :
+    private inner class EntryAdapter(private val mItemCount: Int) :
         RecyclerView.Adapter<ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-            return ViewHolder(
-                FragmentAddEntryDialogItemBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
+            val view = FragmentAddEntryDialogItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
-
+            return ViewHolder(view)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -78,9 +73,15 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
+    private inner class ViewHolder(binding: FragmentAddEntryDialogItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val text: TextView = binding.text
+    }
+
     companion object {
 
         // TODO: Customize parameters
+        // Currently using restaurant for testing
         fun newInstance(itemCount: Int): AddEntryDialogFragment =
             AddEntryDialogFragment().apply {
                 arguments = Bundle().apply {

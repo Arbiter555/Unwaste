@@ -10,4 +10,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_inventory">Inventory</string>
     <string name="title_maps">Maps</string>
+    <string name="add_entry_button">Add Entry Button</string>
+    <string name="login">Login</string>
 </resources>

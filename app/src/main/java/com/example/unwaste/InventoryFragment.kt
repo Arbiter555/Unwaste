@@ -8,21 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Retrofit
 import android.util.Log
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.unwaste.ui.theme.UnWasteDark
-import com.example.unwaste.ui.theme.UnWasteLight
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,6 +48,10 @@ class InventoryFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         connectAndGetApiData()
+        myView.findViewById<FloatingActionButton>(R.id.add_entry)?.setOnClickListener {
+            val supportFragmentManager = requireActivity().supportFragmentManager
+            AddEntryDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
+        }
         // Inflate the layout for this fragment
         return myView
     }
@@ -88,33 +79,5 @@ class InventoryFragment : Fragment() {
                 Log.e(TAG, "Failed to fetch restaurants: ${t.message}")
             }
         })
-    }
-
-    @Composable
-    fun AddEntryButton() {
-        Box {
-            Button(
-                onClick = {
-                    val supportFragmentManager = requireActivity().supportFragmentManager
-                    AddEntryDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
-                },
-                contentPadding = ButtonDefaults.ButtonWithIconContentPadding,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = UnWasteLight,
-                    contentColor = UnWasteDark,
-                    disabledContentColor = UnWasteLight,
-                    disabledContainerColor = UnWasteDark
-                ),
-                modifier = Modifier.align(Alignment.BottomEnd)
-            ) {
-                Icon(
-                    Icons.Filled.Add,
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(ButtonDefaults.IconSize)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text("Add Entry")
-            }
-        }
     }
 }
