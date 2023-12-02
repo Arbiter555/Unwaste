@@ -23,8 +23,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
         android:text="Open Hours:"
-        android:gravity="left"></TextView>
+        android:gravity="start" />
 
     <TextView
         android:id="@+id/open_hours"
@@ -36,7 +37,8 @@
         android:layout_marginEnd="20dp"
         android:layout_toEndOf="@+id/location"
         android:gravity="right"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,8 +47,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
         android:text="Pickup:"
-        android:gravity="left"></TextView>
+        android:gravity="left" />
 
     <TextView
         android:id="@+id/available_for_pickup"
@@ -58,7 +61,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:gravity="right"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,8 +71,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
         android:text="Cuisine:"
-        android:gravity="left"></TextView>
+        android:gravity="left" />
 
     <TextView
         android:id="@+id/cuisine_type"
@@ -80,7 +85,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:gravity="right"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
 
 
     <TextView

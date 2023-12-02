@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize theme attributes here -->
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/light_grey</item>
+        <item name="android:colorPrimaryDark">@color/black</item>
     </style>
 </resources>
