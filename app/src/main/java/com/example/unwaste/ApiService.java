@@ -18,5 +18,11 @@ public interface ApiService {
 
     @POST("api/restaurants/")
     Call<Restaurant> createRestaurant(@Body Restaurant restaurant);
+
+    @GET("api/foodsinventory/")
+    Call<List<Food>> getFoods();
+
+    @POST("api/foodsinventory/")
+    Call<Food> createFood(@Body Food food);
 }
 

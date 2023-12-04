@@ -60,23 +60,23 @@ class InventoryFragment : Fragment() {
     private fun connectAndGetApiData() {
         retrofit = RetrofitClient.getClient(BASE_URL)
         val apiService: ApiService = retrofit.create(ApiService::class.java)
-        val call: Call<List<Restaurant>> = apiService.restaurants
+        val call: Call<List<Food>> = apiService.foods
 
-        call.enqueue(object : Callback<List<Restaurant>> {
+        call.enqueue(object : Callback<List<Food>> {
             override fun onResponse(
-                call: Call<List<Restaurant>>,
-                response: Response<List<Restaurant>>
+                call: Call<List<Food>>,
+                response: Response<List<Food>>
             ) {
-                val restaurants: List<Restaurant>? = response.body()?.toList()
-                restaurants?.let {
+                val foods: List<Food>? = response.body()?.toList()
+                foods?.let {
                     recyclerView.adapter =
-                        RestaurantAdapter(it, R.layout.restaurant_card)
-                    Log.d(TAG, "Number of restaurants received: ${restaurants.size}")
+                        FoodAdapter(it, R.layout.food_card)
+                    Log.d(TAG, "Number of foods received: ${foods.size}")
                 }
             }
 
-            override fun onFailure(call: Call<List<Restaurant>>, t: Throwable) {
-                Log.e(TAG, "Failed to fetch restaurants: ${t.message}")
+            override fun onFailure(call: Call<List<Food>>, t: Throwable) {
+                Log.e(TAG, "Failed to fetch foods: ${t.message}")
             }
         })
     }

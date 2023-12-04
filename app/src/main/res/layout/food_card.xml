@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/foods_card">
+
+    <TextView
+        android:id="@+id/food_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:text="Food Name"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
+        android:text="Category:"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/food_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/food_name"
+        android:gravity="end"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_category"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
+        android:text="Quantity:"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/food_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_category"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/food_category"
+        android:gravity="end"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_quantity"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
+        android:text="Package Size:"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/package_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_quantity"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/food_quantity"
+        android:gravity="end"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/package_size"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
+        android:text="Expiration Date:"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/expiration_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/package_size"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/package_size"
+        android:gravity="end"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expiration_date"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
+        android:text="Description:"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/food_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expiration_date"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/expiration_date"
+        android:gravity="end"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_description"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/dark_grey"
+        android:text="Dietary Restrictions:"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/dietary_restriction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_description"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/food_description"
+        android:gravity="end"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey" />
+
+</RelativeLayout>
