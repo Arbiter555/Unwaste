@@ -50,7 +50,7 @@ class InventoryFragment : Fragment() {
         connectAndGetApiData()
         myView.findViewById<FloatingActionButton>(R.id.add_entry)?.setOnClickListener {
             val supportFragmentManager = requireActivity().supportFragmentManager
-            AddEntryDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
+            AddEntryDialogFragment.newInstance(1).show(supportFragmentManager, "dialog")
         }
         // Inflate the layout for this fragment
         return myView
