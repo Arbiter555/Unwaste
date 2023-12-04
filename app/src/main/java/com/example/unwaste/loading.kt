@@ -8,7 +8,8 @@ import android.widget.ProgressBar
 import android.widget.Button
 import android.os.Looper
 
-
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 
 class loading : AppCompatActivity() {
     //private lateinit var progressBar: ProgressBar
@@ -32,8 +33,12 @@ class loading : AppCompatActivity() {
             // Handle button click to start the main activity
             startButton.setOnClickListener {
                 // To test inventory activity
-                val intent = Intent(this, MainActivity::class.java)
+                // val intent = Intent(this, MainActivity::class.java)
+                // startActivity(intent)
+
+                val intent = Intent(this, UserLogin::class.java)
                 startActivity(intent)
+
 
                 // To test maps activity
                 //val intent = Intent(this, MapsActivity::class.java)

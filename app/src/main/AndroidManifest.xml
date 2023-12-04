@@ -28,7 +28,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="@string/maps_api_key" />
 
         <activity
             android:name=".MainActivity"
@@ -45,6 +45,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--Open UserLogin activity-->
+        <activity
+            android:name=".UserLogin"
+            android:theme="@style/AppTheme">
+        </activity>
+
         <activity
             android:name=".InventoryActivity"
             android:exported="false"
