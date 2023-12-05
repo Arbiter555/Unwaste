@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent // For starting the main activity
 import android.os.Handler // For delaying the transition to the main activity
-import android.widget.ProgressBar
 import android.widget.Button
 import android.os.Looper
 
@@ -40,6 +39,6 @@ class loading : AppCompatActivity() {
                 //startActivity(intent)
                 finish() // Close the loading activity
             }
-        }, 2000) // Adjust the delay as needed
+        }, 500) // Adjust the delay as needed
     }
 }

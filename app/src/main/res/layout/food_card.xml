@@ -1,162 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/foods_card"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/foods_card">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/food_name"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
         android:text="Food Name"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/food_name"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:textColor="@color/dark_grey"
-        android:text="Category:"
-        android:gravity="start" />
-
-    <TextView
-        android:id="@+id/food_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/food_name"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_toEndOf="@+id/food_name"
-        android:gravity="end"
+        android:layout_below="@+id/food_description"
+        android:gravity="start"
         android:textSize="16sp"
-        android:textColor="@color/dark_grey" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/food_category"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
+        android:text="Dietary Restrictions:"
         android:textColor="@color/dark_grey"
-        android:text="Quantity:"
-        android:gravity="start" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/food_quantity"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/food_category"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_toEndOf="@+id/food_category"
-        android:gravity="end"
+        android:layout_below="@+id/expiration_date"
+        android:gravity="start"
         android:textSize="16sp"
-        android:textColor="@color/dark_grey" />
+        android:text="Description:"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/food_description"
+        android:gravity="start"
+        android:text="Expiration Date:"
+        android:textColor="@color/dark_grey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/food_description" />
+
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/food_quantity"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:textColor="@color/dark_grey"
+        android:gravity="start"
+        android:textSize="16sp"
         android:text="Package Size:"
-        android:gravity="start" />
+        android:textColor="@color/dark_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_category"
+        android:gravity="start"
+        android:textSize="16sp"
+        android:text="Quantity:"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_name"
+        android:gravity="start"
+        android:text="Category:"
+        android:textColor="@color/dark_grey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_name" />
 
     <TextView
         android:id="@+id/package_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/food_quantity"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
         android:layout_toEndOf="@+id/food_quantity"
         android:gravity="end"
+        android:textColor="@color/dark_grey"
         android:textSize="16sp"
-        android:textColor="@color/dark_grey" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_quantity" />
 
     <TextView
+        android:id="@+id/food_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/package_size"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/food_name"
+        android:layout_toEndOf="@+id/food_name"
+        android:gravity="end"
         android:textColor="@color/dark_grey"
-        android:text="Expiration Date:"
-        android:gravity="start" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_name" />
+
+    <TextView
+        android:id="@+id/food_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_category"
+        android:layout_toEndOf="@+id/food_category"
+        android:gravity="end"
+        android:textColor="@color/dark_grey"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_category" />
 
     <TextView
         android:id="@+id/expiration_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/package_size"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
         android:layout_toEndOf="@+id/package_size"
         android:gravity="end"
-        android:textSize="16sp"
-        android:textColor="@color/dark_grey" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/expiration_date"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
         android:textColor="@color/dark_grey"
-        android:text="Description:"
-        android:gravity="start" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_description" />
 
     <TextView
         android:id="@+id/food_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/expiration_date"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_toEndOf="@+id/expiration_date"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/textView2"
         android:gravity="end"
-        android:textSize="16sp"
-        android:textColor="@color/dark_grey" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/food_description"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
         android:textColor="@color/dark_grey"
-        android:text="Dietary Restrictions:"
-        android:gravity="start" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView2" />
 
     <TextView
         android:id="@+id/dietary_restriction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/food_description"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
         android:layout_toEndOf="@+id/food_description"
         android:gravity="end"
+        android:textColor="@color/dark_grey"
         android:textSize="16sp"
-        android:textColor="@color/dark_grey" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expiration_date" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dietary_restriction"
+        android:layout_marginEnd="250dp"
+        android:layout_toEndOf="@+id/dietary_restriction"
+
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="textView,textView2,textView3,textView4,textView5,textView6" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="401dp"
+        android:layout_height="2dp"
+        android:layout_below="@+id/dietary_restriction"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@id/dietary_restriction"
+        app:layout_constraintTop_toBottomOf="@+id/dietary_restriction" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

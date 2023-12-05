@@ -71,7 +71,7 @@ class InventoryFragment : Fragment() {
                 foods?.let {
                     recyclerView.adapter =
                         FoodAdapter(it, R.layout.food_card)
-                    Log.d(TAG, "Number of foods received: ${foods.size}")
+                    Log.d(TAG, "Number of foods received: ${foods.size}")   
                 }
             }
 

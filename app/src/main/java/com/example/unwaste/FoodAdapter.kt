@@ -1,5 +1,6 @@
 package com.example.unwaste
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,8 @@ class FoodAdapter(
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
+        val currentFood = foods[position]
+        Log.d("Food Adapter", "Food at position $position: $currentFood")
         holder.food_name.text = foods[position].food_name
         holder.food_category.text = foods[position].food_category
         holder.food_quantity.text = foods[position].food_quantity

@@ -5,38 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="56dp"
-    android:background="#FFFFFF"
+    android:background="@color/unwaste_light"
     android:theme="@style/Theme.Inventory"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <!--<androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/unwaste_light"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Inventory"
+        app:titleTextColor="@color/unwaste_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
 
-        <!--<androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/unwaste_light"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:title="Inventory"
-            app:titleTextColor="@color/unwaste_dark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        android:overScrollMode="never"
+        android:paddingTop="4dp"
+        android:paddingBottom="@dimen/list_item_spacing"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:scrollbars="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            android:overScrollMode="never"
-            android:scrollbars="vertical" />
-
-
-    </ScrollView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_entry"
@@ -44,9 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/unwaste_dark"
+        android:contentDescription="@string/add_entry_button"
         android:elevation="6dp"
-        android:backgroundTint="@color/unwaste_light"
-        android:src="@drawable/add_dark"
-        android:contentDescription="@string/add_entry_button" />
+        android:src="@drawable/add_light" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

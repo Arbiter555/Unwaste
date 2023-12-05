@@ -1,5 +1,7 @@
 package com.example.unwaste;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Food {
@@ -32,6 +34,7 @@ public class Food {
         this.dietary_restriction = dietary_restriction;
         this.food_quantity = food_quantity;
         this.package_size = package_size;
+        expiration_date = expiration_date.substring(0, 10);
         this.expiration_date = expiration_date;
     }
 
@@ -61,5 +64,19 @@ public class Food {
 
     public String getExpiration_date() {
         return expiration_date;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Food{" +
+                "food_name='" + food_name + '\'' +
+                ", food_category='" + food_category + '\'' +
+                ", food_description='" + food_description + '\'' +
+                ", dietary_restriction='" + dietary_restriction + '\'' +
+                ", food_quantity='" + food_quantity + '\'' +
+                ", package_size='" + package_size + '\'' +
+                ", expiration_date='" + expiration_date + '\'' +
+                '}';
     }
 }
