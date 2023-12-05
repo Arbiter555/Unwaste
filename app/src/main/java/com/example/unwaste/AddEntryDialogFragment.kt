@@ -10,9 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import android.widget.TextView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.Spinner
 import com.example.unwaste.databinding.FragmentAddEntryDialogItemBinding
 import com.example.unwaste.databinding.FragmentAddEntryDialogBinding
+import java.util.Calendar
 
 // TODO: Customize parameter argument names
 const val ARG_ITEM_COUNT = "item_count"
@@ -37,17 +42,67 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    //Entry fields
+    private lateinit var editTextFoodName: EditText
+    private lateinit var spinnerFoodCategory: Spinner
+    private lateinit var editTextFoodQuantity: EditText
+    private lateinit var spinnerPackageSizeUnit: Spinner
+    private lateinit var editTextDescription: EditText
+    private lateinit var datePickerExpiration: DatePicker
+    private lateinit var spinnerDietaryRestrictions: Spinner
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentAddEntryDialogBinding.inflate(inflater, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_entry_dialog_item, container, false)
+
+        // Initialize UI components
+        editTextFoodName = view.findViewById(R.id.editTextFoodName)
+        spinnerFoodCategory = view.findViewById(R.id.spinnerFoodCategory)
+        editTextFoodQuantity = view.findViewById(R.id.editTextFoodQuantity)
+        spinnerPackageSizeUnit = view.findViewById(R.id.spinnerPackageSizeUnit)
+        editTextDescription = view.findViewById(R.id.editTextDescription)
+        datePickerExpiration = view.findViewById(R.id.datePickerExpiration)
+        spinnerDietaryRestrictions = view.findViewById(R.id.spinnerDietaryRestrictions)
+
+        // Set up the spinner for Food Category
+        val foodCategories = arrayOf("Category 1", "Category 2", "Category 3")
+        val categoryAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, foodCategories)
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerFoodCategory.adapter = categoryAdapter
+
+        // Set up the spinner for Package Size Unit
+        val packageSizeUnits = arrayOf("Unit 1", "Unit 2", "Unit 3")
+        val unitAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, packageSizeUnits)
+        unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPackageSizeUnit.adapter = unitAdapter
+
+        // Set up the spinner for Dietary Restrictions
+        val dietaryRestrictions = arrayOf("Restriction 1", "Restriction 2", "Restriction 3")
+        val restrictionAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, dietaryRestrictions)
+        restrictionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerFoodCategory.adapter = restrictionAdapter
+
+
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Find the submit button by its ID
+        val submitButton = binding.root.findViewById<Button>(R.id.submitButton)
+
+        // Set up the click listener
+        submitButton.setOnClickListener {
+            onSubmitClicked(it) // Call your existing method
+        }
+
         val recyclerView = binding.root.findViewById<RecyclerView>(R.id.list)
         recyclerView.layoutManager = LinearLayoutManager(context)
         Log.d("AddEntryDialogFragment", recyclerView.toString())
@@ -58,12 +113,31 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
                 override fun onPreDraw(): Boolean {
                     if (recyclerView.isAttachedToWindow) {
                         // RecyclerView is attached, set the adapter
-                        recyclerView.adapter = arguments?.getInt(ARG_ITEM_COUNT)?.let { EntryAdapter(it) }
+                        recyclerView.adapter =
+                            arguments?.getInt(ARG_ITEM_COUNT)?.let { EntryAdapter(it) }
                         recyclerView.viewTreeObserver.removeOnPreDrawListener(this)
                     }
                     return true
                 }
             }
+        )
+    }
+
+    fun onSubmitClicked(view: View) {
+        // Retrieve values from the form
+        val foodName = editTextFoodName.text.toString()
+        val foodCategory = spinnerFoodCategory.selectedItem.toString()
+        val foodQuantity = editTextFoodQuantity.text.toString().toIntOrNull() ?: 0
+        val packageSizeUnit = spinnerPackageSizeUnit.selectedItem.toString()
+        val description = editTextDescription.text.toString()
+        val dietaryRestrictions = spinnerDietaryRestrictions.selectedItem.toString()
+
+        // Retrieve expiration date from DatePicker
+        val expirationDate = Calendar.getInstance()
+        expirationDate.set(
+            datePickerExpiration.year,
+            datePickerExpiration.month,
+            datePickerExpiration.dayOfMonth
         )
     }
 
@@ -80,7 +154,7 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.text.text = position.toString()
+            //holder.text.text = position.toString()
         }
 
         override fun getItemCount(): Int {
@@ -90,7 +164,7 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
 
     private inner class ViewHolder(binding: FragmentAddEntryDialogItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val text: TextView = binding.text
+        //val text: TextView = binding.text
     }
 
     companion object {

@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Silly way of structuring the modal but short on time -->
+<!-- This file built by ChatGPT -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/text"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:paddingLeft="@dimen/list_item_spacing"
-    android:paddingTop="@dimen/list_item_spacing_half"
-    android:paddingRight="@dimen/list_item_spacing"
-    android:paddingBottom="@dimen/list_item_spacing_half"
-    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-    tools:text="Hello" />
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AddEntryDialogFragment">
+
+    <EditText
+        android:id="@+id/editTextFoodName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Food name" />
+
+    <Spinner
+        android:id="@+id/spinnerFoodCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/food_category"
+        tools:listitem="@android:layout/simple_spinner_item" />
+
+    <EditText
+        android:id="@+id/editTextFoodQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Food quantity"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/spinnerPackageSizeUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/package_size_unit"
+        tools:listitem="@android:layout/simple_spinner_item" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="textMultiLine" />
+
+    <DatePicker
+        android:id="@+id/datePickerExpiration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:descendantFocusability="blocksDescendants" />
+
+    <Spinner
+        android:id="@+id/spinnerDietaryRestrictions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dietary_restrictions" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit" />
+</LinearLayout>
+
