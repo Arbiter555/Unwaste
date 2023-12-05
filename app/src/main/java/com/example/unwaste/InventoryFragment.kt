@@ -15,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Fragment for displaying the restaurant's inventory.
+ * Fragment for displaying and managing the restaurant's inventory.
  *
  * Code for Retrofit and API integrations adapted from
  * https://medium.com/android-news/consuming-rest-api-using-retrofit-library-in-android-ed47aef01ecb
@@ -49,9 +49,26 @@ class InventoryFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         connectAndGetApiData()
         myView.findViewById<FloatingActionButton>(R.id.add_entry)?.setOnClickListener {
+            // To dim the inventory:
+            val dimOverlay: View = myView.findViewById(R.id.dim_overlay)
+            dimOverlay.visibility = View.VISIBLE
+            Log.d(TAG, "Dim overlay visibility: ${dimOverlay.visibility}")
+
+            // To show the add entry dialog:
             val supportFragmentManager = requireActivity().supportFragmentManager
-            AddEntryDialogFragment.newInstance(1).show(supportFragmentManager, "dialog")
+            val dialogFragment = AddEntryDialogFragment.newInstance(1)
+
+            // Remove dim when dialog is dismissed:
+            dialogFragment.setOnDismissListener(object : OnDismissListener {
+                override fun onDismiss() {
+                    dimOverlay.visibility = View.GONE
+                }
+            })
+
+            // Show dialog:
+            dialogFragment.show(supportFragmentManager, "dialog")
         }
+
         // Inflate the layout for this fragment
         return myView
     }

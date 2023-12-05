@@ -1,5 +1,6 @@
 package com.example.unwaste
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -29,6 +30,8 @@ const val ARG_ITEM_COUNT = "item_count"
 class AddEntryDialogFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentAddEntryDialogBinding? = null
+
+    private var dismissListener: OnDismissListener? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -107,4 +110,14 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun setOnDismissListener(listener: OnDismissListener) {
+        dismissListener = listener
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        dismissListener?.onDismiss()
+    }
+
 }
