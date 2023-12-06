@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Spinner
+import com.example.unwaste.Constants.BASE_URL
 import com.example.unwaste.databinding.FragmentAddEntryDialogItemBinding
 import com.example.unwaste.databinding.FragmentAddEntryDialogBinding
 import java.util.Calendar
@@ -41,6 +42,8 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var submitButton: Button
 
     //Entry fields
     private lateinit var editTextFoodName: EditText
@@ -90,22 +93,17 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
         spinnerFoodCategory.adapter = restrictionAdapter
 
 
+        // Find the submit button by its ID
+        submitButton = view.findViewById<Button>(R.id.submitButton)
+
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // Find the submit button by its ID
-        val submitButton = binding.root.findViewById<Button>(R.id.submitButton)
-
-        // Set up the click listener
-        submitButton.setOnClickListener {
-            onSubmitClicked(it) // Call your existing method
-        }
 
         val recyclerView = binding.root.findViewById<RecyclerView>(R.id.list)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        Log.d("AddEntryDialogFragment", recyclerView.toString())
 
         // Use ViewTreeObserver to wait until the RecyclerView is attached to the window
         recyclerView.viewTreeObserver.addOnPreDrawListener(
@@ -121,6 +119,12 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
                 }
             }
         )
+
+        // Set up the click listener
+        submitButton.setOnClickListener {
+            Log.d("AddEntryDialogFragment", "Submit button clicked")
+            onSubmitClicked(it) // Call your existing method
+        }
     }
 
     fun onSubmitClicked(view: View) {
@@ -139,6 +143,22 @@ class AddEntryDialogFragment : BottomSheetDialogFragment() {
             datePickerExpiration.month,
             datePickerExpiration.dayOfMonth
         )
+
+        // Create a new food
+        val food = Food(
+            foodName,
+            foodCategory,
+            description,
+            dietaryRestrictions,
+            foodQuantity.toString(),
+            packageSizeUnit,
+            expirationDate.toString(),
+        )
+
+        val retrofit = RetrofitClient.getClient(BASE_URL)
+        val apiService: ApiService = retrofit.create(ApiService::class.java)
+        apiService.createFood(food)
+        Log.i("AddEntryDialogFragment", "Food added: $food")
     }
 
     private inner class EntryAdapter(private val mItemCount: Int) :

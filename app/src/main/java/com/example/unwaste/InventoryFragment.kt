@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Retrofit
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.unwaste.Constants.BASE_URL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,13 +26,8 @@ class InventoryFragment : Fragment() {
 
     private val TAG = InventoryFragment::class.java.simpleName
 
-    //Need to change this to the IP address of the computer running the server when testing
-    val BASE_URL = "http://192.168.1.230:8080/inventoryManager/"
     private lateinit var retrofit: Retrofit
     private lateinit var recyclerView: RecyclerView
-
-    // insert your API KEY here
-    private val API_KEY = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

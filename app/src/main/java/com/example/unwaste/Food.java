@@ -27,7 +27,9 @@ public class Food {
     @SerializedName("dietary_restriction")
     private final String dietary_restriction;
 
-    public Food(String food_name, String food_category, String food_description, String dietary_restriction, String food_quantity, String package_size, String expiration_date) {
+    public Food(String food_name, String food_category, String food_description,
+                String dietary_restriction, String food_quantity, String package_size,
+                String expiration_date) {
         this.food_name = food_name;
         this.food_category = food_category;
         this.food_description = food_description;
