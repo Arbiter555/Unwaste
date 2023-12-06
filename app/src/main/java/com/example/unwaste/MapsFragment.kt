@@ -39,8 +39,16 @@ class MapsFragment : Fragment() {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(iowaCity))
 
         for (marker in placeMarkers) {
+            //mMap.addMarker(MarkerOptions().position(customMarker).title(marker.title))
             val customMarker = LatLng(marker.latitude, marker.longitude)
-            mMap.addMarker(MarkerOptions().position(customMarker).title(marker.title))
+            val locName = marker.title
+            val contactNum = marker.contact
+            val marker = mMap.addMarker(
+                MarkerOptions()
+                    .position(customMarker)
+                    .title(locName)
+                    .snippet("${contactNum}")
+            )
         }
     }
 
